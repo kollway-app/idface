@@ -22,6 +22,20 @@ class IdfaceApi {
         return $result;
     }
 
+    public function requestVerifyForImageCode($id_number, $name, $image_code, $ip) {
+        if(!$ip) {
+            $ip = $this->get_host_ip();
+        }
+        $data = array(
+            "number" => $id_number,
+            "name" => $name,
+            "feature_code" => array($image_code),
+            "user_ip"=> $ip
+        );
+        $result = $this->kexin_client->post_verification($data);
+        return $result;
+    }
+
     private function get_host_ip(){
 
         $cip = (isset($_SERVER['HTTP_CLIENT_IP']) AND $_SERVER['HTTP_CLIENT_IP'] != "") ? $_SERVER['HTTP_CLIENT_IP'] : FALSE;
