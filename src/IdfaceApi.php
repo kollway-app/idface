@@ -22,7 +22,7 @@ class IdfaceApi {
         return $result;
     }
 
-    public function requestVerifyForImageCode($id_number, $name, $image_code, $ip) {
+    public function requestVerifyForImageCode($id_number, $name, $image_code, $ip='') {
         if(!$ip) {
             $ip = $this->get_host_ip();
         }
